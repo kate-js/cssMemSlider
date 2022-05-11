@@ -17,13 +17,15 @@ body {
 input[type="radio"] {
   display: inline-block;
   cursor: pointer;
-  font: inherit;
-  color: currentColor;
-  width: 1.15em;
-  height: 1.15em;
-  border: 0.15em solid red;
+  width: 1rem;
+  height: 1rem;
+  accent-color: #232323;
   border-radius: 50%;
-  transform: translateY(-0.075em);
+}
+
+input:hover {
+  accent-color: #4864e2;
+  background-color: red;
 }
 
 .wrapper {
@@ -88,6 +90,7 @@ input[type="radio"] {
 #slide4:checked ~ .slider .slides:nth-of-type(4),
 #slide5:checked ~ .slider .slides:nth-of-type(5) {
   display: block;
+  animation: fade 2s ease forwards;
 }
 
 label {
@@ -106,4 +109,17 @@ input[type="radio"]:hover {
 #slide4:checked ~ .controls label:nth-of-type(4),
 #slide5:checked ~ .controls label:nth-of-type(5) {
   display: inline-block;
+  animation: fade 2s ease forwards;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
 }
