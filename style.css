@@ -14,20 +14,6 @@ body {
   background-color: whitesmoke;
 }
 
-input[type="radio"] {
-  display: inline-block;
-  cursor: pointer;
-  width: 1rem;
-  height: 1rem;
-  accent-color: #232323;
-  border-radius: 50%;
-}
-
-input:hover {
-  accent-color: #4864e2;
-  background-color: red;
-}
-
 .wrapper {
   height: 100%;
   margin: 1% 10% 0;
@@ -35,11 +21,10 @@ input:hover {
   flex-direction: row-reverse;
   flex-wrap: wrap-reverse;
   align-items: center;
-  justify-content: space-around;
 }
 
-.controls {
-  margin-right: 50%;
+.text {
+  margin-right: calc(100vw - 85%);
 }
 
 .slider {
@@ -59,7 +44,7 @@ input:hover {
   background-position: center;
 }
 
-.slide5 {
+.slide1 {
   background-image: url("./assets/image1.jpeg");
   display: none;
 }
@@ -79,7 +64,7 @@ input:hover {
   display: none;
 }
 
-.slide1 {
+.slide5 {
   background-image: url("./assets/image7.jpeg");
   display: none;
 }
@@ -93,21 +78,24 @@ input:hover {
   animation: fade 2s ease forwards;
 }
 
-label {
-  display: none;
+.text {
   color: black;
-  font-size: 5em;
+  font-size: 5vw;
 }
 
-input[type="radio"]:hover {
-  background-color: turquoise;
+.text1,
+.text2,
+.text3,
+.text4,
+.text5 {
+  display: none;
 }
 
-#slide1:checked ~ .controls label:nth-of-type(1),
-#slide2:checked ~ .controls label:nth-of-type(2),
-#slide3:checked ~ .controls label:nth-of-type(3),
-#slide4:checked ~ .controls label:nth-of-type(4),
-#slide5:checked ~ .controls label:nth-of-type(5) {
+#slide1:checked ~ .text .text1,
+#slide2:checked ~ .text .text2,
+#slide3:checked ~ .text .text3,
+#slide4:checked ~ .text .text4,
+#slide5:checked ~ .text .text5 {
   display: inline-block;
   animation: fade 2s ease forwards;
 }
@@ -121,5 +109,74 @@ input[type="radio"]:hover {
   to {
     opacity: 1;
     visibility: visible;
+  }
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  background-color: #444;
+  padding: 0.5em;
+  border: 0.4em solid whitesmoke;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#slide1:checked ~ .controls label:nth-of-type(1),
+#slide2:checked ~ .controls label:nth-of-type(2),
+#slide3:checked ~ .controls label:nth-of-type(3),
+#slide4:checked ~ .controls label:nth-of-type(4),
+#slide5:checked ~ .controls label:nth-of-type(5) {
+  background-color: #42a61e;
+  border: 0.4em solid whitesmoke;
+}
+
+#slide1:active ~ .controls label:nth-of-type(1),
+#slide2:active ~ .controls label:nth-of-type(2),
+#slide3:active ~ .controls label:nth-of-type(3),
+#slide4:active ~ .controls label:nth-of-type(4),
+#slide5:active ~ .controls label:nth-of-type(5) {
+  background-color: red;
+  border: 0.4em solid whitesmoke;
+}
+
+label:hover {
+  background-color: #7ddb80;
+}
+
+@media screen and (max-width: 1100px) {
+  .slider {
+    height: 70vh;
+  }
+  .wrapper {
+    justify-content: center;
+    align-content: flex-end;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    justify-content: center;
+    align-content: flex-end;
+  }
+
+  .text {
+    display: flex;
+    width: 100%;
+    margin-right: 0;
+    order: -1;
+  }
+
+  .slider {
+    height: 50vh;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .slider {
+    height: 40vh;
   }
 }
